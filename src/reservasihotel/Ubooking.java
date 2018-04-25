@@ -29,6 +29,7 @@ public class Ubooking extends javax.swing.JFrame {
 
         titledBorder1 = javax.swing.BorderFactory.createTitledBorder("");
         jLabel6 = new javax.swing.JLabel();
+        titledBorder2 = javax.swing.BorderFactory.createTitledBorder("");
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -234,5 +235,6 @@ public class Ubooking extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.border.TitledBorder titledBorder1;
+    private javax.swing.border.TitledBorder titledBorder2;
     // End of variables declaration//GEN-END:variables
 }

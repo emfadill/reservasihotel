@@ -9,6 +9,8 @@
         <Property name="text" type="java.lang.String" value="Alamat"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.border.TitledBorder" name="titledBorder2">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
