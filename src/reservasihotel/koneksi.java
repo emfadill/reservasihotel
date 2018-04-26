@@ -24,7 +24,7 @@ public class koneksi {
     public static Connection koneksiDB() throws SQLException {
         if(mysqlkonek==null){
             try {
-                String DB="jdbc:mysql://localhost:3306/amazing"; // delta_db database
+                String DB="jdbc:mysql://localhost:3306/tugasbesar"; // delta_db database
                 String user="root"; // user database
                 String pass=""; // password database
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -40,7 +40,7 @@ public class koneksi {
      public void config(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost/amazing", "root", "");
+            con=DriverManager.getConnection("jdbc:mysql://localhost/tugasbesar", "root", "");
             stm = con.createStatement();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "koneksi gagal "+e.getMessage());

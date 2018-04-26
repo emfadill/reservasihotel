@@ -70,6 +70,8 @@ public class login extends javax.swing.JFrame {
 
         jLabel3.setText("Password : ");
 
+        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
         jMenu3.setText("File");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
