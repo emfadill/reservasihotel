@@ -215,8 +215,11 @@
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="tgl_booking">
           <Properties>
-            <Property name="dateFormatString" type="java.lang.String" value="yyyy-MM-dd"/>
+            <Property name="dateFormatString" type="java.lang.String" value="yyyy-mm-dd"/>
           </Properties>
+          <Events>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="tgl_bookingPropertyChange"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>

@@ -70,7 +70,12 @@ public class Ubooking extends javax.swing.JFrame {
 
         jLabel5.setText("Alamat");
 
-        tgl_booking.setDateFormatString("yyyy-MM-dd");
+        tgl_booking.setDateFormatString("yyyy-mm-dd");
+        tgl_booking.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tgl_bookingPropertyChange(evt);
+            }
+        });
 
         jLabel7.setText("Nomor HP");
 
@@ -219,7 +224,11 @@ public class Ubooking extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        
+    
+    public static String nampungtgl;
+
+       
+    
     public void insert_data(){
         String status="Tidak";
              try {
@@ -257,6 +266,10 @@ public class Ubooking extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        cleardata();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tgl_bookingPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tgl_bookingPropertyChange
+      
+    }//GEN-LAST:event_tgl_bookingPropertyChange
 
     /**
      * @param args the command line arguments
