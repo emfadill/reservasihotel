@@ -5,13 +5,20 @@
  */
 package reservasihotel;
 
+import javax.swing.JOptionPane;
+
+import config.Koneksi;
 import java.awt.HeadlessException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JOptionPane;
-import net.proteanit.sql.DbUtils;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -22,8 +29,14 @@ public class Ubooking extends javax.swing.JFrame {
     /**
      * Creates new form Ubooking
      */
+    Connection conn;
+    Statement stat;
+    ResultSet rsset;
+    
     public Ubooking() {
         initComponents();
+        
+        tampil_combo();
     }
 
     /**
@@ -230,18 +243,42 @@ public class Ubooking extends javax.swing.JFrame {
        
     
     public void insert_data(){
-        String status="Tidak";
-             try {
-             java.sql.Connection conn = (java.sql.Connection)koneksi.koneksiDB();
-            String sql = "INSERT INTO booking(Kode_booking, No_KTP, id, Nama, Alamat, Nomor_HP, Jenis_Kamar, Tanggal_Booking, Status) VALUES ('"+kd_booking.getText()+"','"+no_ktp.getText()+"','"+id.getText()+"','"+nama.getText()+"','"+alamat.getText()+"','"+no_hp.getText()+"','"+jenis_kamar.getSelectedItem()+"','"+tgl_booking.getDate()+"','"+status+"')";
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.execute();
+         String Status = "Tidak";
+        String sql =" INSERT INTO tb_booking(kode_booking, no_ktp, username, nama, alamat, nomor_hp, jenis_kamar, tanggal_booking, status) "
+                     + "VALUES ('"+kd_booking.getText()+"','"+no_ktp.getText()+"','"+id.getText()+"','"+nama.getText()+"','"+alamat.getText()+"','"+no_hp.getText()+"','"+jenis_kamar.getSelectedItem()+"','"+((JTextField)tgl_booking.getDateEditor().getUiComponent()).getText()+"','"+Status+"')";
+        try 
+        {
+            PreparedStatement p2=(PreparedStatement) conn.prepareStatement(sql);
+            p2.executeUpdate();
+            p2.close();
+            JOptionPane.showMessageDialog(null,"Booking Berhasil");
+        }
+        catch (SQLException ex)
+        {
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan "+ex.getMessage());  
+        }
+        }
+    
+    public void tampil_combo()
+    {
+        try {
+        java.sql.Connection conn = (java.sql.Connection)Koneksi.Conn();
+        Statement stt = conn.createStatement();
+        String sql = "select nama_kamar from tb_kamar order by kode_kamar asc";      // disini saya menampilkan NIM, anda dapat menampilkan
+        ResultSet res = stt.executeQuery(sql);                                // yang anda ingin kan
         
-            JOptionPane.showMessageDialog(null, "berhasil disimpan");
-        } catch (SQLException | HeadlessException e) {
-            JOptionPane.showMessageDialog(null, e);
+        while(res.next()){
+            Object[] ob = new Object[3];
+            ob[0] = res.getString(1);
+            
+            jenis_kamar.addItem((String) ob[0]);                                      // fungsi ini bertugas menampung isi dari database
         }
+        res.close(); stt.close();
+         
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }
     
      private void cleardata(){
          kd_booking.setText("");
